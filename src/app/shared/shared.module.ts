@@ -15,16 +15,33 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 
+const uiModules = [
+  CommonModule,
+  MatButtonModule,
+  MatToolbarModule,
+  MatIconModule,
+  LayoutModule,
+  MatSidenavModule,
+  MatListModule,
+  MatMenuModule,
+  RouterModule,
+  MatCardModule,
+  MatFormFieldModule,
+  MatInputModule,
+  MatSnackBarModule 
+]
+
+const components = [ShellComponent]
+
 
 @NgModule({
-  declarations: [
-    ShellComponent
-  ],
-  imports: [
-    CommonModule
-  ],
+  declarations: [...components],
+  imports: [...uiModules],
   exports: [
-    ShellComponent
+    ...components
+    ,...uiModules,
   ]
 })
+
+// Central location to store common UI elements that will be used across the whole app
 export class SharedModule { }
