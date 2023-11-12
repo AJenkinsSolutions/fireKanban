@@ -1,38 +1,74 @@
+<!-- Main Navigation Container -->
+<mat-sidenav-container class="sidenav-container" >
 
-<mat-sidenav-container class="sidenav-container">
-
-  <mat-sidenav #sidenav [mode]="(isHandset$ | async) ? 'over' : 'side' "
-   fixedInViewport="true"
+    <!-- Second Nav Bar / Responsive Nav Bar for Mobile -->
+  <mat-sidenav #sidenav
+    [mode]="(isHandset$ | async) ? 'over' : 'side' "
+    fixedInViewport="true"
     [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
-    [opened]="false">
-    <mat-toolbar>menu</mat-toolbar>
+    [opened]="false"
+    >
+    <!-- Side Nav Menu -->
+    <mat-toolbar (click)="sidenav.close()">menu</mat-toolbar>
+    <!-- Side Nav Menu Links -->
     <mat-nav-list>
       <a mat-list-item routerLink="#" (click)="sidenav.close()">Home</a>
-      <a mat-list-item routerLink="#" (click)="sidenav.close()">Login</a>
-      <a mat-list-item routerLink="#" (click)="sidenav.close()">Kanban Demo</a>
-      <a mat-list-item routerLink="#" (click)="sidenav.close()">SSR Demo</a>
+      <a mat-list-item routerLink="#" (click)="sidenav.close()"> Login</a>
+      <a mat-list-item routerLink="#" (click)="sidenav.close()"> Kanban Demo</a>
+      <a mat-list-item routerLink="#" (click)="sidenav.close()"> SSR Demo</a>
     </mat-nav-list>
   </mat-sidenav>
 
   <mat-sidenav-content>
-    <mat-toolbar>
-      <button type="button" aria-label="Toggle sidenav"
-              mat-icon-button (click)="sidenav.toggle()"
-              *ngIf="isHandset$ | async">
 
+    <!-- Main Desktop Nav Bar -->
+    <mat-toolbar>
+      <!-- Main Nav bar - Hamburger menu   -->
+      <button type="button"
+            aria-label="Toggle sidenav"
+            mat-icon-button (click)="sidenav.toggle()"
+            *ngIf="isHandset$ | async">
+            <!-- If viewport is a hanset display the hamburger menu -->
         <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
       </button>
-      <span class="logo">🔥 Angular FireStarter</span>
-      
-      <!-- links for larger devices -->
+      <!-- Main Nav Bar Icon -->
+      <span class="logo">🔥 Angular FireStarter</span> 
+      <!-- Main Nav Bar Links -->
       <span class="fill-space"></span>
+      <!-- If its NOT a hand set display the Main Navbar Links -->
       <div *ngIf="!(isHandset$ | async)">
-        <a mat-button routerLink="/Kanban"> Kanban Demo</a>
-        <a mat-button routerLink="/customers"> SSR Demo</a>
-        <a mat-button routerLink="/login"> Login</a>
+
+        <a mat-button routerLink="/Kanban">🔑 Kanban Demo</a>
+        <a mat-button routerLink="/customers">🍱 SSR Demo</a>
+        <a mat-button routerLink="/login">⚡ Login</a>
       </div>
-      <!-- other toolbar content -->
+      <!-- other Main nav bar content -->
+
+      <!-- Drop Down Menu Icon Button -->
+      <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="">
+        <mat-icon>more_vert</mat-icon>
+      </button>
+      <!-- Drop Down -->
+      <mat-menu #menu="matMenu">
+        <a mat-menu-item href="">
+            <i>💬</i>
+            <span>Chat on Discord</span>
+        </a>
+        <a mat-menu-item href="">
+            <i>💬</i>
+            <span>Code on Github</span>
+        </a>
+        <a mat-menu-item href="">
+            <i>💬</i>
+            <span>Youtube Channel</span>
+        </a>
+
+      </mat-menu>
+
     </mat-toolbar>
+
+
+
 
     <!-- main content -->
   </mat-sidenav-content>

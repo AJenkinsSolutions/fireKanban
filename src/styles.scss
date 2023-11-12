@@ -40,8 +40,13 @@ margin: 0;
 
 font-family: Roboto, "Helvetica Neue", sans-serif;
 
-background-color: #353734;
+background-color: #424242;
 
 color: white;
 
 }
+//This class is used within the span tag to 'fill' the space between the Main Nav title and the links
+.fill-space {
+    display: inline-block;
+    width: 100%;
+  }
